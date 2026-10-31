@@ -74,7 +74,7 @@ app.post("/api/register", authLimiter, async (req, res) => {
   const password = typeof req.body.password === "string" ? req.body.password : "";
   if (!/^[A-Za-z0-9_]{3,20}$/.test(username))
     return res.status(400).json({ error: "Kullanıcı adı 3-20 karakter olmalı; harf, rakam ve _ kullanılabilir." });
-  if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email) || email.length > 160)
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 160)
     return res.status(400).json({ error: "Geçerli bir e-posta adresi gir." });
   if (password.length < 10 || password.length > 72)
     return res.status(400).json({ error: "Şifre 10-72 karakter arasında olmalı." });
