@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0876c9"><title>ROBLOX 2016 REBORN</title>
+  <link rel="stylesheet" href="/styles.css"><script src="/app.js" defer></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/"><span class="brand-mark">R</span><span>ROBLOX <b>2016</b> REBORN</span></a>
+  <nav><a class="active" href="#games">Games</a><a href="#catalog">Catalog</a><a href="#about">About</a></nav>
+  <div class="account" id="accountArea"><button class="btn light" data-open="login">Login</button><button class="btn white" data-open="register">Sign Up</button></div>
+</header>
+<main>
+<section class="hero">
+  <div class="hero-copy"><div class="eyebrow">THE CLASSIC ERA, REIMAGINED</div>
+    <h1>Imagine. Create.<br><span>Play Together.</span></h1>
+    <p>2016'nın klasik oyun portalı ruhu, yeni nesil bir topluluk altyapısıyla geri dönüyor.</p>
+    <div class="hero-actions"><button class="btn white large" data-open="register">Join the Reborn</button><a class="btn outline large" href="#games">Explore Games</a></div>
+    <div class="hero-note"><span class="dot"></span> Community-powered classic experience</div>
+  </div>
+  <div class="hero-art" aria-hidden="true"><div class="sun"></div><div class="block block-one"></div><div class="block block-two"></div><div class="block block-three"></div><div class="cloud c1"></div><div class="cloud c2"></div></div>
+</section>
+<section class="welcome panel"><div><div class="eyebrow blue">WELCOME TO REBORN</div><h2>Good games. Great memories.</h2><p>Bir hesap oluştur, topluluğa katıl ve klasik oyun portalını keşfet.</p></div><div class="welcome-stat"><strong id="playerCount">—</strong><span>PLAYERS REGISTERED</span></div></section>
+<section id="games" class="section"><div class="section-head"><div><div class="eyebrow blue">DISCOVER</div><h2>Popular Games</h2></div><span class="muted">Featured experiences</span></div>
+<div class="game-grid">
+<article class="game-card"><div class="game-thumb obby"><span>OBBY</span><i>◆</i></div><div class="game-info"><div><h3>Classic Obby</h3><p>Jump, dodge and reach the end.</p></div><button class="play-btn" data-game="Classic Obby">▶ Play</button></div></article>
+<article class="game-card"><div class="game-thumb city"><span>ROCKFORD</span><i>▰</i></div><div class="game-info"><div><h3>Town of Rockford</h3><p>Explore a blocky little town.</p></div><button class="play-btn" data-game="Town of Rockford">▶ Play</button></div></article>
+<article class="game-card"><div class="game-thumb tycoon"><span>TYCOON</span><i>⬡</i></div><div class="game-info"><div><h3>Build a Tycoon</h3><p>Build your own mini empire.</p></div><button class="play-btn" data-game="Build a Tycoon">▶ Play</button></div></article>
+</div><p class="notice">Demo experiences: oyun sunucuları henüz bağlı değil. Play butonları sonraki entegrasyon için arayüzdür.</p></section>
+<section id="catalog" class="catalog panel"><div><div class="eyebrow blue">YOUR NEXT ADVENTURE</div><h2>Make something awesome.</h2><p>Bu portal bağımsız bir topluluk projesidir. Kendi oyun motoru ve oyun sunucuları sonraki geliştirme aşamasında eklenebilir.</p></div><div class="catalog-icon">✦</div></section>
+<section id="about" class="about"><h2>Built for the community.</h2><p>ROBLOX 2016 REBORN, Roblox Corporation tarafından işletilmez veya onaylanmaz. Bağımsız bir fan projesidir.</p></section>
+</main>
+<footer><span>© 2026 ROBLOX 2016 REBORN</span><span>Classic spirit · New community</span></footer>
+<div class="modal-backdrop" id="modal" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+<button class="close" id="closeModal" aria-label="Close">×</button><div class="eyebrow blue">JOIN THE COMMUNITY</div><h2 id="modalTitle">Create your account</h2><p class="modal-sub" id="modalSub">Your adventure starts here.</p>
+<form id="authForm">
+<label id="usernameWrap">Username<input name="username" minlength="3" maxlength="20" autocomplete="username" placeholder="YourUsername"></label>
+<label id="emailWrap">Email<input name="email" type="email" autocomplete="email" placeholder="you@example.com"></label>
+<label id="loginWrap" hidden>Username or email<input name="login" autocomplete="username" placeholder="Username or email"></label>
+<label>Password<input name="password" type="password" minlength="10" maxlength="72" autocomplete="new-password" placeholder="At least 10 characters"></label>
+<button class="btn primary submit" type="submit" id="submitAuth">Create account</button><div class="form-error" id="formError" role="alert"></div>
+</form><p class="switch-mode" id="switchMode">Already have an account? <button type="button" data-open="login">Log in</button></p>
+</section></div><div class="toast" id="toast" role="status"></div>
+</body></html>
