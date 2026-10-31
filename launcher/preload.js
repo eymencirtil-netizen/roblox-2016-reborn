@@ -1,0 +1,1 @@
+// Intentionally minimal: no Node APIs are exposed to the website.
