@@ -1,6 +1,6 @@
 const { app, BrowserWindow, shell } = require("electron");
 const path = require("path");
-const DEFAULT_URL = process.env.REBORN_URL || "http://localhost:3000";
+const { baseUrl: DEFAULT_URL } = require("./config");
 
 function createWindow() {
   const win = new BrowserWindow({
