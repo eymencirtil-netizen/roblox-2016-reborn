@@ -5,59 +5,96 @@
   <meta name="theme-color" content="#0876c9"><title>ROBLOX 2021 REBORN</title>
   <link rel="stylesheet" href="/styles.css"><script src="/app.js" defer></script>
 </head>
-<body>
-<header class="topbar">
-  <a class="brand" href="#"><span class="brand-mark">R</span><span>ROBLOX <b>2021</b> REBORN</span></a>
-  <nav><a class="active" href="#games">Games</a><a href="#avatar">Avatar</a><a href="#shop">Catalog</a><a href="#about">About</a></nav>
+<body class="classic-home">
+<header class="classic-topbar">
+  <a class="classic-brand" href="#"><span class="classic-logo">R</span><span>REBORN</span></a>
+  <nav class="classic-nav"><a class="selected" href="#">Home</a><a href="#games">Games</a><a href="#avatar">Avatar</a><a href="#shop">Catalog</a></nav>
+  <div class="classic-search"><input id="gameSearch" type="search" placeholder="Search experiences" aria-label="Search experiences"><button id="searchButton" type="button" aria-label="Search">⌕</button></div>
   <div class="account" id="accountArea"><button class="btn light" data-open="login">Login</button><button class="btn white" data-open="register">Sign Up</button></div>
 </header>
-<main>
-<section class="hero">
-  <div class="hero-copy"><div class="eyebrow">THE ROBLOX ERA OF 2021</div>
-    <h1>Play your<br><span>favorite worlds.</span></h1>
-    <p>Brookhaven'den Pet Simulator X'e, 2021 Roblox döneminin unutulmaz oyunlarını yeniden keşfet.</p>
-    <div class="hero-actions"><button class="btn white large" data-open="register">Join Reborn</button><a class="btn outline large" href="#games">Explore Games</a></div>
-    <div class="hero-note"><span class="dot"></span> Classic Roblox memories, community-made</div>
-  </div>
-  <div class="hero-art" aria-hidden="true"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="tile tile-one">★</div><div class="tile tile-two">◆</div><div class="tile tile-three">✦</div></div>
-</section>
-<section class="welcome panel">
-  <div><div class="eyebrow blue">WELCOME BACK</div><h2>Make your 2021-style avatar.</h2><p>Hesap aç, ReBux kazan, avatarını düzenle ve oyun kataloğunu keşfet.</p></div>
-  <div class="welcome-stat"><strong id="playerCount">—</strong><span>REBORN PLAYERS</span></div>
-</section>
-<section id="games" class="section">
-  <div class="section-head"><div><div class="eyebrow blue">THE 2021 COLLECTION</div><h2>Popular Experiences</h2></div><span class="muted">2021 favorites</span></div>
-  <div class="game-grid" id="gameGrid">
-    <article class="game-card"><div class="game-thumb brookhaven"><span>BROOKHAVEN</span></div><div class="game-info"><div><h3>Brookhaven RP</h3><p>Live your story in the city.</p></div><a class="play-btn" href="https://www.roblox.com/search/experiences?keyword=Brookhaven%20RP" target="_blank" rel="noopener">▶ Play</a></div></article>
-    <article class="game-card"><div class="game-thumb towerhell"><span>TOWER OF HELL</span></div><div class="game-info"><div><h3>Tower of Hell</h3><p>Race through the obby.</p></div><a class="play-btn" href="https://www.roblox.com/search/experiences?keyword=Tower%20of%20Hell" target="_blank" rel="noopener">▶ Play</a></div></article>
-    <article class="game-card"><div class="game-thumb adoptme"><span>ADOPT ME!</span></div><div class="game-info"><div><h3>Adopt Me!</h3><p>Raise pets and build a home.</p></div><a class="play-btn" href="https://www.roblox.com/search/experiences?keyword=Adopt%20Me" target="_blank" rel="noopener">▶ Play</a></div></article>
-    <article class="game-card"><div class="game-thumb meepcity"><span>MEEPCITY</span></div><div class="game-info"><div><h3>MeepCity</h3><p>Hang out and customize.</p></div><a class="play-btn" href="https://www.roblox.com/search/experiences?keyword=MeepCity" target="_blank" rel="noopener">▶ Play</a></div></article>
-    <article class="game-card"><div class="game-thumb royalehigh"><span>ROYALE HIGH</span></div><div class="game-info"><div><h3>Royale High</h3><p>Dress up and explore magical realms.</p></div><a class="play-btn" href="https://www.roblox.com/search/experiences?keyword=Royale%20High" target="_blank" rel="noopener">▶ Play</a></div></article>
-    <article class="game-card"><div class="game-thumb bedwars"><span>BEDWARS</span></div><div class="game-info"><div><h3>BedWars</h3><p>Defend your bed and win.</p></div><a class="play-btn" href="https://www.roblox.com/search/experiences?keyword=BedWars" target="_blank" rel="noopener">▶ Play</a></div></article>
-    <article class="game-card"><div class="game-thumb bloxfruits"><span>BLOX FRUITS</span></div><div class="game-info"><div><h3>Blox Fruits</h3><p>Explore, fight and level up.</p></div><a class="play-btn" href="https://www.roblox.com/search/experiences?keyword=Blox%20Fruits" target="_blank" rel="noopener">▶ Play</a></div></article>
-    <article class="game-card"><div class="game-thumb piggy"><span>PIGGY</span></div><div class="game-info"><div><h3>Piggy</h3><p>Escape the chapter.</p></div><a class="play-btn" href="https://www.roblox.com/search/experiences?keyword=Piggy" target="_blank" rel="noopener">▶ Play</a></div></article>
-    <article class="game-card"><div class="game-thumb mm2"><span>MURDER MYSTERY 2</span></div><div class="game-info"><div><h3>Murder Mystery 2</h3><p>Find the murderer.</p></div><a class="play-btn" href="https://www.roblox.com/search/experiences?keyword=Murder%20Mystery%202" target="_blank" rel="noopener">▶ Play</a></div></article>
-    <article class="game-card"><div class="game-thumb astd"><span>ALL STAR TOWER DEFENSE</span></div><div class="game-info"><div><h3>All Star Tower Defense</h3><p>Build your anime defense team.</p></div><a class="play-btn" href="https://www.roblox.com/search/experiences?keyword=All%20Star%20Tower%20Defense" target="_blank" rel="noopener">▶ Play</a></div></article>
-    <article class="game-card featured-card"><div class="game-thumb petsim"><span>PET SIMULATOR X</span><b>FEATURED</b></div><div class="game-info"><div><h3>Pet Simulator X</h3><p>Collect pets, hatch eggs and explore worlds.</p></div><a class="play-btn" href="https://www.roblox.com/search/experiences?keyword=Pet%20Simulator%20X" target="_blank" rel="noopener">▶ Play</a></div></article>
-    <article class="game-card featured-card"><div class="game-thumb tds"><span>TOWER DEFENSE SIMULATOR</span><b>FEATURED</b></div><div class="game-info"><div><h3>Tower Defense Simulator</h3><p>Build defenses and survive waves.</p></div><a class="play-btn" href="https://www.roblox.com/search/experiences?keyword=Tower%20Defense%20Simulator" target="_blank" rel="noopener">▶ Play</a></div></article>
-  </div>
-  <p class="notice">Oyun kartları Roblox'un resmi deneyim aramasını açar. Bu bağımsız portal, oyunların kendi sunucularını veya istemcilerini barındırmaz.</p>
-</section>
-<section id="avatar" class="section">
-  <div class="section-head"><div><div class="eyebrow blue">YOUR LOOK</div><h2>Avatar Studio</h2></div><span class="muted">Customize your Reborn profile</span></div>
-  <div class="avatar-layout panel">
-    <div class="avatar-preview-wrap"><div class="avatar-preview" id="avatarPreview"><div class="avatar-head">🙂</div><div class="avatar-body"></div><div class="avatar-legs"><i></i><i></i></div></div><div class="avatar-name" id="avatarName">Guest Avatar</div></div>
-    <div class="avatar-copy"><div class="eyebrow blue">YOUR CHARACTER</div><h3>Make it yours.</h3><p>Shop'tan aldığın eşyaları envanterine ekle ve avatarına kuşan. Yeni hesaplara başlangıç bakiyesi verilir.</p><div class="balance-line"><span>YOUR BALANCE</span><strong id="avatarBalance">500 ReBux</strong></div><a class="btn primary" href="#shop">Open Avatar Shop</a></div>
-  </div>
-</section>
-<section id="shop" class="section">
-  <div class="section-head"><div><div class="eyebrow blue">REBORN CATALOG</div><h2>Avatar Shop</h2></div><div class="shop-balance" id="shopBalance">Sign in to see your ReBux</div></div>
-  <div class="shop-grid" id="shopGrid"><div class="shop-loading">Loading catalog…</div></div>
-  <p class="notice">ReBux yalnızca bu fan projesinde kullanılan sanal test bakiyesidir. Gerçek Robux değildir, satın alınamaz ve Roblox hesabına aktarılamaz.</p>
-</section>
-<section id="about" class="about"><h2>Welcome to the 2021 era.</h2><p>ROBLOX 2021 REBORN, Roblox Corporation tarafından işletilmez veya onaylanmaz. Bağımsız bir topluluk projesidir.</p></section>
-</main>
-<footer><span>© 2026 ROBLOX 2021 REBORN</span><span>Community-made · Not affiliated with Roblox</span></footer>
+
+<div class="classic-shell">
+  <aside class="classic-sidebar">
+    <div class="side-user" id="sideUser"><div class="side-avatar">?</div><div><strong>Guest</strong><span>Welcome to Reborn</span></div></div>
+    <div class="side-label">DISCOVER</div>
+    <a class="side-link active" href="#"><span>⌂</span> Home</a>
+    <a class="side-link" href="#games"><span>▦</span> Games</a>
+    <a class="side-link" href="#games"><span>★</span> Popular</a>
+    <div class="side-label">YOUR STUFF</div>
+    <a class="side-link" href="#avatar"><span>♟</span> Avatar</a>
+    <a class="side-link" href="#shop"><span>▤</span> Inventory</a>
+    <a class="side-link" href="#shop"><span>◈</span> Catalog</a>
+    <div class="side-promo"><strong>REBORN COMMUNITY</strong><p>Create an account, collect items and customize your character.</p><button data-open="register">Join now</button></div>
+    <div class="side-foot">ROBLOX 2021 REBORN<br>Independent fan project</div>
+  </aside>
+
+  <main class="classic-main">
+    <section class="home-welcome">
+      <div><div class="classic-kicker">HOME</div><h1>Discover</h1><p>Find your next favorite experience.</p></div>
+      <div class="home-user-count"><strong id="playerCount">—</strong><span>REGISTERED PLAYERS</span></div>
+    </section>
+
+    <section class="classic-feature">
+      <div class="feature-art"><div class="feature-orbit"></div><div class="feature-pet">🐾</div><div class="feature-spark">✦</div></div>
+      <div class="feature-copy"><span class="feature-tag">REBORN FEATURED</span><h2>Pet Simulator X</h2><p>Collect pets, hatch eggs and explore colorful worlds. Open the original experience directly from Reborn.</p><button class="classic-primary" data-game="Pet Simulator X">▶ Play Pet Simulator X</button></div>
+    </section>
+
+    <section id="games" class="classic-section">
+      <div class="classic-section-head"><div><h2>Popular Experiences</h2><p>Community favorites from the 2021 Roblox era</p></div><a href="#games">Discover all</a></div>
+      <div id="all-games" class="classic-game-grid">
+        <article class="classic-game-card" data-title="Brookhaven RP"><div class="classic-game-art art-brookhaven">🏡</div><div class="classic-game-text"><h3>Brookhaven RP</h3><p>Roleplay & Hangout</p><button data-game="Brookhaven RP">▶ Play</button></div></article>
+        <article class="classic-game-card" data-title="Adopt Me!"><div class="classic-game-art art-adopt">🐶</div><div class="classic-game-text"><h3>Adopt Me!</h3><p>Pets & Family</p><button data-game="Adopt Me!">▶ Play</button></div></article>
+        <article class="classic-game-card" data-title="Blox Fruits"><div class="classic-game-art art-blox">🍍</div><div class="classic-game-text"><h3>Blox Fruits</h3><p>Adventure & Fighting</p><button data-game="Blox Fruits">▶ Play</button></div></article>
+        <article class="classic-game-card" data-title="Piggy"><div class="classic-game-art art-piggy">🐷</div><div class="classic-game-text"><h3>Piggy</h3><p>Survival & Story</p><button data-game="Piggy">▶ Play</button></div></article>
+        <article class="classic-game-card" data-title="BedWars"><div class="classic-game-art art-bedwars">⚔️</div><div class="classic-game-text"><h3>BedWars</h3><p>Strategy & PvP</p><button data-game="BedWars">▶ Play</button></div></article>
+        <article class="classic-game-card" data-title="Royale High"><div class="classic-game-art art-royale">👑</div><div class="classic-game-text"><h3>Royale High</h3><p>Roleplay & Fashion</p><button data-game="Royale High">▶ Play</button></div></article>
+        <article class="classic-game-card" data-title="MeepCity"><div class="classic-game-art art-meep">🐾</div><div class="classic-game-text"><h3>MeepCity</h3><p>Social & Hangout</p><button data-game="MeepCity">▶ Play</button></div></article>
+        <article class="classic-game-card" data-title="Tower of Hell"><div class="classic-game-art art-tower">🧗</div><div class="classic-game-text"><h3>Tower of Hell</h3><p>Obby & Skill</p><button data-game="Tower of Hell">▶ Play</button></div></article>
+        <article class="classic-game-card" data-title="Murder Mystery 2"><div class="classic-game-art art-mm2">🔎</div><div class="classic-game-text"><h3>Murder Mystery 2</h3><p>Mystery & Survival</p><button data-game="Murder Mystery 2">▶ Play</button></div></article>
+      </div>
+    </section>
+
+    <section class="classic-section">
+      <div class="classic-section-head"><div><h2>Tower Defense & Pets</h2><p>Your requested featured games</p></div></div>
+      <div class="classic-game-grid compact-grid">
+        <article class="classic-game-card" data-title="Tower Defense Simulator"><div class="classic-game-art art-tds">🛡️</div><div class="classic-game-text"><h3>Tower Defense Simulator</h3><p>Tower Defense</p><button data-game="Tower Defense Simulator">▶ Play</button></div></article>
+        <article class="classic-game-card" data-title="All Star Tower Defense"><div class="classic-game-art art-astd">⭐</div><div class="classic-game-text"><h3>All Star Tower Defense</h3><p>Anime Tower Defense</p><button data-game="All Star Tower Defense">▶ Play</button></div></article>
+        <article class="classic-game-card" data-title="Pet Simulator X"><div class="classic-game-art art-petsim">🐱</div><div class="classic-game-text"><h3>Pet Simulator X</h3><p>Pets & Collection</p><button data-game="Pet Simulator X">▶ Play</button></div></article>
+      </div>
+      <p class="classic-note">Play buttons launch the original experience in the Roblox app. Roblox must be installed and you must be signed in there.</p>
+    </section>
+
+    <section id="avatar" class="classic-section">
+      <div class="classic-section-head"><div><h2>Avatar</h2><p>Make your Reborn character your own</p></div><a href="#shop">Open catalog</a></div>
+      <div class="classic-avatar-panel">
+        <div class="avatar-preview-wrap"><div class="avatar-preview" id="avatarPreview"><div class="avatar-head">🙂</div><div class="avatar-body"></div><div class="avatar-legs"><i></i><i></i></div></div><div class="avatar-name" id="avatarName">Guest Avatar</div></div>
+        <div class="avatar-copy"><div class="classic-kicker">YOUR CHARACTER</div><h3>Customize your avatar</h3><p>Buy items in the catalog, add them to your inventory and equip them here.</p><div class="balance-line"><span>YOUR BALANCE</span><strong id="avatarBalance">500 ReBux</strong></div><a class="classic-primary as-link" href="#shop">Open Avatar Shop</a></div>
+      </div>
+    </section>
+
+    <section id="shop" class="classic-section">
+      <div class="classic-section-head"><div><h2>Catalog</h2><p>Hats, clothes and accessories for your avatar</p></div><div class="shop-balance" id="shopBalance">Sign in to see your ReBux</div></div>
+      <div class="shop-grid" id="shopGrid"><div class="shop-loading">Loading catalog…</div></div>
+      <p class="shop-disclaimer">ReBux is a virtual test currency used only in this independent fan project. It is not real Robux.</p>
+    </section>
+    <footer class="classic-footer" id="about">ROBLOX 2021 REBORN · Independent community project · Not affiliated with Roblox Corporation</footer>
+  </main>
+</div>
+
+<div class="game-modal-backdrop" id="gameModal" hidden>
+  <section class="game-modal" role="dialog" aria-modal="true" aria-labelledby="gameModalTitle">
+    <button class="game-modal-close" id="closeGameModal" aria-label="Close">×</button>
+    <div class="game-modal-icon">🎮</div><div class="classic-kicker">REBORN EXPERIENCE</div>
+    <h2 id="gameModalTitle">Game title</h2>
+    <p id="gameModalDescription">Game details</p>
+    <div class="game-not-ready" id="gameLaunchNote">Opening the original experience in Roblox.</div>
+    <div class="game-modal-actions">
+      <a class="classic-primary launch-client" id="launchGameButton" href="#">▶ Open in Roblox app</a>
+      <a class="game-web-fallback" id="gameWebFallback" href="#" target="_blank" rel="noopener">Open official game page</a>
+    </div>
+  </section>
+</div>
+
 <div class="modal-backdrop" id="modal" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
 <button class="close" id="closeModal" aria-label="Close">×</button><div class="eyebrow blue">JOIN THE COMMUNITY</div><h2 id="modalTitle">Create your account</h2><p class="modal-sub" id="modalSub">Your adventure starts here.</p>
 <form id="authForm">
