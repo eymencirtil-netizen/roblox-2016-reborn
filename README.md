@@ -32,6 +32,18 @@ SQLite creates `reborn.sqlite` and `sessions.sqlite` in the project folder. New 
 
 For production, set a long, unique `SESSION_SECRET` and `NODE_ENV=production`. The server refuses to start in production if `SESSION_SECRET` is missing. Use persistent storage for SQLite databases and HTTPS.
 
+## Deploy to Render
+
+A `render.yaml` Blueprint is included. It configures the Node web service in Frankfurt, creates a 1 GB persistent disk for SQLite user/game data and sessions, and generates a production session secret. Persistent disks require a paid Render service.
+
+1. Sign in to Render and choose **New → Blueprint**.
+2. Connect the GitHub repository `eymencirtil-netizen/roblox-2016-reborn`.
+3. Select the `main` branch and confirm the Blueprint.
+4. Review the paid service and disk cost shown by Render, then create it only if you approve.
+5. Wait for the first deploy to complete. Open the generated `onrender.com` URL and test registration, login and a published mini-game.
+
+The app exposes `/api/health` for Render health checks. Production sessions trust Render's HTTPS proxy, and the SQLite database plus session database are stored beneath `/var/data`.
+
 ## Build the Windows launcher
 
 The launcher opens the hosted Reborn website; it is not a standalone game engine.
