@@ -1,52 +1,58 @@
 # ROBLOX 2021 REBORN
 
-Independent community-built 2021-inspired web portal starter with account registration/login and a Windows Electron launcher.
+An independent, community-built Roblox-era portal with accounts, an avatar catalog, a Creator Hub, browser-playable mini-game templates and a Windows Electron launcher.
 
-## Included
-- Responsive retro-inspired website
-- Username/email + password registration
-- Login/logout and persistent SQLite user database
-- bcrypt password hashing
-- Basic authentication rate limiting, Helmet security headers, HTTP-only session cookie
-- 2021-era game catalog with official Roblox search links
-- ReBux test currency, avatar item shop, purchases and equip flow
-- Electron desktop launcher that opens the configured portal URL
+## Included in this version
 
-## 2021 game catalog
-The main catalog is based on Roblox's official 2021 year-in-review list of most-visited experiences. Pet Simulator X and All Star Tower Defense are highlighted, and Tower Defense Simulator is included as an additional community-requested game. Game cards open Roblox search results; they do not run the original games inside this portal.
+- Classic Roblox-inspired blue navigation, sidebar and game-card home page
+- Account registration, login and logout
+- SQLite-backed profiles and sessions; bcrypt password hashing
+- ReBux test currency, avatar catalog, purchases and equipping
+- Popular Roblox experience cards with official Roblox app deep links
+- Creator Hub: signed-in users can publish games from three built-in templates
+- Community Creations list; published games open inside Reborn
+- Playable templates: Pet Clicker, Blocky Obby and Tower Defense Mini
+- Electron Windows launcher source and a GitHub Actions installer workflow
 
-## Not included yet
-This is a community portal, not a Roblox emulator or game engine. Game cards open Roblox's official experience search; the original games still run on Roblox. The avatar shop uses project-only ReBux test currency, not real Robux. Multiplayer experiences hosted by this project, full 3D avatar rendering, friends, chat, moderation/admin tools, email verification, password reset and user-generated content require further implementation.
+## Important game distinction
+
+The popular Roblox experience cards represent original games made and hosted by their respective creators. Reborn opens those experiences using Roblox's documented app deep-link format; the original Roblox app must be installed and the player must be signed in to Roblox.
+
+The Creator Hub publishes Reborn-native mini-games made from the built-in templates. It does not upload arbitrary Unity/Godot projects, run the Roblox game engine, or copy third-party Roblox experiences. A full 3D multiplayer game engine, arbitrary project uploads, moderation tools, friends/chat, email verification and password reset are not included yet.
 
 ## Run locally
+
 1. Install Node.js 20 LTS or newer.
-2. Run `npm install`.
-3. Set a strong session secret:
-   - Windows PowerShell: `$env:SESSION_SECRET="a-long-random-secret"`
-   - macOS/Linux: `export SESSION_SECRET="a-long-random-secret"`
-4. Run `npm start`.
+2. Open a terminal in the folder containing `package.json`.
+3. Run `npm install`.
+4. For local development, run `npm start`.
 5. Open http://localhost:3000.
 
-SQLite creates `reborn.sqlite` and `sessions.sqlite` in the project folder. New accounts start with 500 ReBux. Existing databases are migrated automatically when the updated server starts.
+SQLite creates `reborn.sqlite` and `sessions.sqlite` in the project folder. New accounts receive 500 ReBux. Existing user databases are migrated when the updated server starts.
 
-## Build Windows launcher
-The launcher opens the hosted website; it does not contain a game engine.
-1. Deploy the web app to a public HTTPS URL first.
-2. In GitHub, open **Settings → Secrets and variables → Actions → Variables** and add a repository variable named `REBORN_URL` containing that URL (for example, `https://your-domain.example`).
-3. Open **Actions → Build Windows Launcher → Run workflow**.
-4. Download the `roblox-2016-reborn-windows` artifact from the completed workflow run. It contains the Windows installer.
+For production, set a long, unique `SESSION_SECRET` and `NODE_ENV=production`. The server refuses to start in production if `SESSION_SECRET` is missing. Use persistent storage for SQLite databases and HTTPS.
 
-For local development, the launcher configuration defaults to `http://localhost:3000`.
+## Build the Windows launcher
+
+The launcher opens the hosted Reborn website; it is not a standalone game engine.
+
+1. Deploy the website to a public HTTPS URL first.
+2. In GitHub, open **Settings → Secrets and variables → Actions → Variables**.
+3. Add a repository variable named `REBORN_URL` containing the deployed URL.
+4. Open **Actions → Build Windows Launcher → Run workflow**.
+5. Download the `roblox-2021-reborn-windows` artifact from the completed workflow run.
+
+For local development, the launcher defaults to `http://localhost:3000`.
 
 ## Public deployment checklist
-- Use a host with persistent disk, or replace SQLite with a managed database.
-- Set `NODE_ENV=production` and a unique long random `SESSION_SECRET`. Never use the development fallback.
+
+- Use a host with persistent disk storage, or replace SQLite with a managed database.
+- Set `NODE_ENV=production` and a long random `SESSION_SECRET`.
 - Use HTTPS and a custom domain.
-- Persist both SQLite database files; ephemeral hosting storage can erase accounts on redeploy.
-- Back up the database and test restore procedures.
-- Add email verification, password reset, privacy policy, terms, abuse reporting, moderation and account deletion before public registration.
-- Add CSRF protection and review all security configuration before production launch.
-- Collect as little personal data as possible and restrict database access.
+- Keep SQLite database and session files on persistent storage and back them up.
+- Before opening public registration broadly, add privacy policy, terms, abuse reporting, moderation, account deletion and CSRF protection.
+- Restrict access to database files and collect as little personal data as possible.
 
 ## Project identity
-Independent fan-made project. Not affiliated with or endorsed by Roblox Corporation. Use original branding and assets; do not imply official status.
+
+Independent fan-made project. Not affiliated with, endorsed by, or operated by Roblox Corporation. Use original branding and original game assets; do not imply official status.
