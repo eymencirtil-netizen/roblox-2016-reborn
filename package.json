@@ -1,8 +1,8 @@
 {
-  "name": "roblox-2016-reborn",
+  "name": "roblox-2021-reborn",
   "version": "1.0.0",
   "private": true,
-  "description": "Independent 2016-inspired community portal with accounts and an Electron launcher",
+  "description": "Independent 2021-inspired community portal with accounts, creator publishing, mini-games and an Electron launcher.",
   "main": "launcher/main.js",
   "scripts": {
     "start": "node server.js",
@@ -24,11 +24,21 @@
     "electron-builder": "^25.1.8"
   },
   "build": {
-    "appId": "com.reborn.roblox2016.launcher",
-    "productName": "Roblox 2016 Reborn",
-    "directories": { "output": "dist-launcher" },
-    "files": ["launcher/**/*", "package.json"],
-    "win": { "target": "nsis" },
-    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true }
+    "appId": "com.reborn.roblox2021.launcher",
+    "productName": "ROBLOX 2021 REBORN",
+    "directories": {
+      "output": "dist-launcher"
+    },
+    "files": [
+      "launcher/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
   }
 }
