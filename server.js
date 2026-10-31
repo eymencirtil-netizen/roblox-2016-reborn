@@ -44,6 +44,7 @@ async function initDatabase() {
   if (!names.includes("rebux_balance")) await run("ALTER TABLE users ADD COLUMN rebux_balance INTEGER NOT NULL DEFAULT 500");
   if (!names.includes("avatar_item_id")) await run("ALTER TABLE users ADD COLUMN avatar_item_id TEXT NOT NULL DEFAULT 'classic-noob'");
   await run("CREATE TABLE IF NOT EXISTS owned_items (user_id INTEGER NOT NULL, item_id TEXT NOT NULL, purchased_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (user_id, item_id), FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE)");
+  await run("INSERT OR IGNORE INTO owned_items (user_id, item_id) SELECT id, 'classic-noob' FROM users");
 }
 
 app.disable("x-powered-by");
