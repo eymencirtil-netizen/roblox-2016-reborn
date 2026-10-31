@@ -1,4 +1,4 @@
-# ROBLOX 2016 REBORN
+# ROBLOX 2021 REBORN
 
 Independent community-built 2016-inspired web portal starter with account registration/login and a Windows Electron launcher.
 
@@ -8,10 +8,12 @@ Independent community-built 2016-inspired web portal starter with account regist
 - Login/logout and persistent SQLite user database
 - bcrypt password hashing
 - Basic authentication rate limiting, Helmet security headers, HTTP-only session cookie
+- 2021-era game catalog with official Roblox search links
+- ReBux test currency, avatar item shop, purchases and equip flow
 - Electron desktop launcher that opens the configured portal URL
 
 ## Not included yet
-This is a portal foundation, not a Roblox emulator or full game engine. Sample game cards are placeholders. Multiplayer games, avatar editor, friends, chat, moderation/admin tools, email verification, password reset and user-generated content require further implementation.
+This is a community portal, not a Roblox emulator or game engine. Game cards open Roblox's official experience search; the original games still run on Roblox. The avatar shop uses project-only ReBux test currency, not real Robux. Multiplayer experiences hosted by this project, full 3D avatar rendering, friends, chat, moderation/admin tools, email verification, password reset and user-generated content require further implementation.
 
 ## Run locally
 1. Install Node.js 20 LTS or newer.
@@ -22,7 +24,7 @@ This is a portal foundation, not a Roblox emulator or full game engine. Sample g
 4. Run `npm start`.
 5. Open http://localhost:3000.
 
-SQLite creates `reborn.sqlite` and `sessions.sqlite` in the project folder.
+SQLite creates `reborn.sqlite` and `sessions.sqlite` in the project folder. New accounts start with 500 ReBux. Existing databases are migrated automatically when the updated server starts.
 
 ## Build Windows launcher
 The launcher opens the hosted website; it does not contain a game engine.
