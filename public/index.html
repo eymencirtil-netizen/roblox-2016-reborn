@@ -8,7 +8,7 @@
 <body class="classic-home">
 <header class="classic-topbar">
   <a class="classic-brand" href="#"><span class="classic-logo">R</span><span>REBORN</span></a>
-  <nav class="classic-nav"><a class="selected" href="#">Home</a><a href="#games">Games</a><a href="#avatar">Avatar</a><a href="#shop">Catalog</a></nav>
+  <nav class="classic-nav"><a class="selected" href="#">Home</a><a href="#games">Games</a><a href="#creator">Create</a><a href="#avatar">Avatar</a><a href="#shop">Catalog</a></nav>
   <div class="classic-search"><input id="gameSearch" type="search" placeholder="Search experiences" aria-label="Search experiences"><button id="searchButton" type="button" aria-label="Search">⌕</button></div>
   <div class="account" id="accountArea"><button class="btn light" data-open="login">Login</button><button class="btn white" data-open="register">Sign Up</button></div>
 </header>
@@ -24,6 +24,7 @@
     <a class="side-link" href="#avatar"><span>♟</span> Avatar</a>
     <a class="side-link" href="#shop"><span>▤</span> Inventory</a>
     <a class="side-link" href="#shop"><span>◈</span> Catalog</a>
+    <a class="side-link" href="#creator"><span>✚</span> Creator Hub</a>
     <div class="side-promo"><strong>REBORN COMMUNITY</strong><p>Create an account, collect items and customize your character.</p><button data-open="register">Join now</button></div>
     <div class="side-foot">ROBLOX 2021 REBORN<br>Independent fan project</div>
   </aside>
@@ -64,6 +65,27 @@
       <p class="classic-note">Play buttons launch the original experience in the Roblox app. Roblox must be installed and you must be signed in there.</p>
     </section>
 
+
+    <section id="creator" class="classic-section creator-section">
+      <div class="classic-section-head"><div><h2>Creator Hub</h2><p>Build and publish your own Reborn experiences</p></div><span class="creator-pill">CREATOR TOOLS</span></div>
+      <div class="creator-layout">
+        <form id="creatorForm" class="creator-form">
+          <label>Game name<input name="title" minlength="3" maxlength="40" placeholder="My Awesome Game" required></label>
+          <label>Description<textarea name="description" minlength="10" maxlength="240" rows="3" placeholder="Tell players what your game is about..." required></textarea></label>
+          <div class="creator-form-row">
+            <label>Genre<select name="genre" required><option value="Adventure">Adventure</option><option value="Simulator">Simulator</option><option value="Tower Defense">Tower Defense</option><option value="Obby">Obby</option></select></label>
+            <label>Game template<select name="template" required><option value="pet-clicker">Pet Clicker</option><option value="blocky-obby">Blocky Obby</option><option value="tower-defense">Tower Defense Mini</option></select></label>
+          </div>
+          <button class="classic-primary creator-submit" type="submit">Publish experience</button>
+          <div class="creator-message" id="creatorMessage" role="status"></div>
+          <p class="creator-small">First version: publish using Reborn's built-in templates. Uploading arbitrary Unity/Godot projects and full 3D multiplayer servers are not supported yet.</p>
+        </form>
+        <div class="creator-aside"><div class="creator-aside-icon">🛠️</div><h3>Your game. Your players.</h3><p>Published games appear in the community catalog. Other players can open them directly inside Reborn.</p><div class="creator-steps"><span>01</span> Choose a template<span>02</span> Add your title and description<span>03</span> Publish to the catalog</div></div>
+      </div>
+      <div class="classic-section-head community-games-head"><div><h2>Community Creations</h2><p>Games published by Reborn creators</p></div></div>
+      <div id="communityGamesGrid" class="classic-game-grid"><div class="community-empty">Loading community games…</div></div>
+    </section>
+
     <section id="avatar" class="classic-section">
       <div class="classic-section-head"><div><h2>Avatar</h2><p>Make your Reborn character your own</p></div><a href="#shop">Open catalog</a></div>
       <div class="classic-avatar-panel">
@@ -84,13 +106,13 @@
 <div class="game-modal-backdrop" id="gameModal" hidden>
   <section class="game-modal" role="dialog" aria-modal="true" aria-labelledby="gameModalTitle">
     <button class="game-modal-close" id="closeGameModal" aria-label="Close">×</button>
-    <div class="game-modal-icon">🎮</div><div class="classic-kicker">REBORN EXPERIENCE</div>
+    <div class="game-modal-icon" id="gameModalIcon">🎮</div><div class="classic-kicker">ROBLOX EXPERIENCE</div>
     <h2 id="gameModalTitle">Game title</h2>
     <p id="gameModalDescription">Game details</p>
-    <div class="game-not-ready" id="gameLaunchNote">Opening the original experience in Roblox.</div>
+    <div class="game-not-ready" id="gameLaunchNote">Roblox must be installed to launch this original experience.</div>
     <div class="game-modal-actions">
       <a class="classic-primary launch-client" id="launchGameButton" href="#">▶ Open in Roblox app</a>
-      <a class="game-web-fallback" id="gameWebFallback" href="#" target="_blank" rel="noopener">Open official game page</a>
+      <a class="game-web-fallback" id="gameWebFallback" href="#" target="_blank" rel="noopener">Game details on Roblox</a>
     </div>
   </section>
 </div>
