@@ -14,10 +14,15 @@ jobs:
         with:
           node-version: 20
       - run: npm install
-      - name: Package Windows installer
-        run: npm run launcher:pack
+      - name: Set deployed website URL in launcher
+        shell: pwsh
         env:
           REBORN_URL: ${{ vars.REBORN_URL }}
+        run: |
+          if ([string]::IsNullOrWhiteSpace($env:REBORN_URL)) { throw "Set the repository variable REBORN_URL to the deployed portal URL first." }
+          node -e "require('fs').writeFileSync('launcher/config.js', 'module.exports = { baseUrl: ' + JSON.stringify(process.env.REBORN_URL) + ' };')"
+      - name: Package Windows installer
+        run: npm run launcher:pack
       - uses: actions/upload-artifact@v4
         with:
           name: roblox-2016-reborn-windows
