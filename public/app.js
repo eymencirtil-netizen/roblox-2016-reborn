@@ -58,5 +58,5 @@ async function loadMe() {
   } catch {}
 }
 function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
-fetch("/api/health").then(r => r.json()).then(() => { $("playerCount").textContent = "LIVE"; }).catch(() => { $("playerCount").textContent = "READY"; });
+fetch("/api/stats").then(r => r.json()).then(d => { $("playerCount").textContent = Number(d.registeredUsers || 0).toLocaleString(); }).catch(() => { $("playerCount").textContent = "—"; });
 loadMe();
