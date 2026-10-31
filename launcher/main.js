@@ -12,6 +12,23 @@ function createWindow() {
       contextIsolation: true, nodeIntegration: false, sandbox: true
     }
   });
+  win.webContents.on("will-navigate", (event, url) => {
+    if (url.startsWith("roblox://")) {
+      event.preventDefault();
+      shell.openExternal(url);
+      return;
+    }
+    try {
+      const target = new URL(url);
+      const home = new URL(DEFAULT_URL);
+      if (target.origin !== home.origin) {
+        event.preventDefault();
+        shell.openExternal(url);
+      }
+    } catch {
+      event.preventDefault();
+    }
+  });
   win.loadURL(DEFAULT_URL);
   win.webContents.setWindowOpenHandler(({ url }) => {
     if (url.startsWith("https://")) shell.openExternal(url);
