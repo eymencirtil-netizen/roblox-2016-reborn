@@ -5,7 +5,7 @@ const { baseUrl: DEFAULT_URL } = require("./config");
 function createWindow() {
   const win = new BrowserWindow({
     width: 1280, height: 820, minWidth: 900, minHeight: 620,
-    title: "ROBLOX 2016 REBORN", backgroundColor: "#f2f5f7",
+    title: "ROBLOX 2021 REBORN", backgroundColor: "#f2f5f7",
     autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
