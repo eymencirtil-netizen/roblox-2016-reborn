@@ -10,6 +10,10 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3000;
 const isProduction = process.env.NODE_ENV === "production";
+const SESSION_SECRET = process.env.SESSION_SECRET;
+if (isProduction && !SESSION_SECRET) {
+  throw new Error("SESSION_SECRET must be set in production.");
+}
 const db = new sqlite3.Database(process.env.DB_PATH || path.join(__dirname, "reborn.sqlite"));
 
 db.serialize(() => {
@@ -39,9 +43,9 @@ app.use(express.json({ limit: "20kb" }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(session({
-  store: new SQLiteStore({ db: "sessions.sqlite", dir: __dirname }),
+  store: new SQLiteStore({ db: "sessions.sqlite", dir: process.env.SESSION_DB_DIR || __dirname }),
   name: "reborn.sid",
-  secret: process.env.SESSION_SECRET || "CHANGE_THIS_SECRET_BEFORE_PUBLIC_DEPLOYMENT",
+  secret: SESSION_SECRET || "local-development-secret-change-before-deploy",
   resave: false,
   saveUninitialized: false,
   cookie: {
@@ -120,6 +124,13 @@ app.get("/api/users/:username", (req, res) => {
       if (err || !user) return res.status(404).json({ error: "Oyuncu bulunamadı." });
       res.json({ user: publicUser(user) });
     });
+});
+
+app.get("/api/stats", (_req, res) => {
+  db.get("SELECT COUNT(*) AS users FROM users", (err, row) => {
+    if (err) return res.status(500).json({ error: "İstatistikler yüklenemedi." });
+    res.json({ registeredUsers: row.users });
+  });
 });
 
 app.get("/api/health", (_req, res) => res.json({ ok: true, name: "ROBLOX 2016 REBORN" }));
