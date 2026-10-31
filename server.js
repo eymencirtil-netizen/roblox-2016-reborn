@@ -8,6 +8,7 @@ const rateLimit = require("express-rate-limit");
 const path = require("path");
 
 const app = express();
+app.set("trust proxy", 1); // Render terminates HTTPS at its proxy; needed for secure session cookies.
 const PORT = process.env.PORT || 3000;
 const isProduction = process.env.NODE_ENV === "production";
 const SESSION_SECRET = process.env.SESSION_SECRET;
