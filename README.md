@@ -1,6 +1,6 @@
 # ROBLOX 2021 REBORN
 
-Independent community-built 2016-inspired web portal starter with account registration/login and a Windows Electron launcher.
+Independent community-built 2021-inspired web portal starter with account registration/login and a Windows Electron launcher.
 
 ## Included
 - Responsive retro-inspired website
@@ -11,6 +11,9 @@ Independent community-built 2016-inspired web portal starter with account regist
 - 2021-era game catalog with official Roblox search links
 - ReBux test currency, avatar item shop, purchases and equip flow
 - Electron desktop launcher that opens the configured portal URL
+
+## 2021 game catalog
+The main catalog is based on Roblox's official 2021 year-in-review list of most-visited experiences. Pet Simulator X and All Star Tower Defense are highlighted, and Tower Defense Simulator is included as an additional community-requested game. Game cards open Roblox search results; they do not run the original games inside this portal.
 
 ## Not included yet
 This is a community portal, not a Roblox emulator or game engine. Game cards open Roblox's official experience search; the original games still run on Roblox. The avatar shop uses project-only ReBux test currency, not real Robux. Multiplayer experiences hosted by this project, full 3D avatar rendering, friends, chat, moderation/admin tools, email verification, password reset and user-generated content require further implementation.
