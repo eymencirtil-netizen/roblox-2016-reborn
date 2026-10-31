@@ -25,13 +25,13 @@ This is a portal foundation, not a Roblox emulator or full game engine. Sample g
 SQLite creates `reborn.sqlite` and `sessions.sqlite` in the project folder.
 
 ## Build Windows launcher
-1. Deploy the web app to its final public URL.
-2. Set `REBORN_URL` to that URL before packaging. Example PowerShell:
-   `$env:REBORN_URL="https://your-domain.example"`
-3. Run `npm run launcher:pack`.
-4. Installer output appears in `dist-launcher/`.
+The launcher opens the hosted website; it does not contain a game engine.
+1. Deploy the web app to a public HTTPS URL first.
+2. In GitHub, open **Settings → Secrets and variables → Actions → Variables** and add a repository variable named `REBORN_URL` containing that URL (for example, `https://your-domain.example`).
+3. Open **Actions → Build Windows Launcher → Run workflow**.
+4. Download the `roblox-2016-reborn-windows` artifact from the completed workflow run. It contains the Windows installer.
 
-The launcher defaults to localhost for development. For a public release, configure the URL at build time or change `DEFAULT_URL` in `launcher/main.js`.
+For local development, the launcher configuration defaults to `http://localhost:3000`.
 
 ## Public deployment checklist
 - Use a host with persistent disk, or replace SQLite with a managed database.
