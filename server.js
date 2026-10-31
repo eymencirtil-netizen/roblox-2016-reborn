@@ -45,6 +45,8 @@ async function initDatabase() {
   if (!names.includes("avatar_item_id")) await run("ALTER TABLE users ADD COLUMN avatar_item_id TEXT NOT NULL DEFAULT 'classic-noob'");
   await run("CREATE TABLE IF NOT EXISTS owned_items (user_id INTEGER NOT NULL, item_id TEXT NOT NULL, purchased_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (user_id, item_id), FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE)");
   await run("INSERT OR IGNORE INTO owned_items (user_id, item_id) SELECT id, 'classic-noob' FROM users");
+  await run("CREATE TABLE IF NOT EXISTS published_games (id INTEGER PRIMARY KEY AUTOINCREMENT, owner_id INTEGER NOT NULL, title TEXT NOT NULL, description TEXT NOT NULL, genre TEXT NOT NULL, template TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (owner_id) REFERENCES users(id) ON DELETE CASCADE)");
+
 }
 
 app.disable("x-powered-by");
@@ -182,6 +184,47 @@ app.post("/api/avatar/equip", requireLogin, (req, res) => {
       res.json({ ok: true, avatarItemId: itemId });
     });
   });
+});
+
+
+const CREATOR_TEMPLATES = new Set(["pet-clicker", "blocky-obby", "tower-defense"]);
+const publishLimiter = rateLimit({ windowMs: 60 * 60 * 1000, limit: 5, standardHeaders: "draft-7", legacyHeaders: false });
+
+app.get("/api/games", (_req, res) => {
+  db.all("SELECT g.id, g.title, g.description, g.genre, g.template, g.created_at, u.username AS creator FROM published_games g JOIN users u ON u.id = g.owner_id ORDER BY g.id DESC LIMIT 100", [], (err, rows) => {
+    if (err) return res.status(500).json({ error: "Oyunlar yüklenemedi." });
+    res.json({ games: rows });
+  });
+});
+
+app.get("/api/games/:id", (req, res) => {
+  const id = Number.parseInt(req.params.id, 10);
+  if (!Number.isInteger(id) || id < 1) return res.status(400).json({ error: "Geçersiz oyun numarası." });
+  db.get("SELECT g.id, g.title, g.description, g.genre, g.template, g.created_at, u.username AS creator FROM published_games g JOIN users u ON u.id = g.owner_id WHERE g.id = ?", [id], (err, game) => {
+    if (err) return res.status(500).json({ error: "Oyun yüklenemedi." });
+    if (!game) return res.status(404).json({ error: "Oyun bulunamadı." });
+    res.json({ game });
+  });
+});
+
+app.post("/api/games", requireLogin, publishLimiter, (req, res) => {
+  const title = clean(req.body.title);
+  const description = clean(req.body.description);
+  const genre = clean(req.body.genre);
+  const template = clean(req.body.template);
+  if (title.length < 3 || title.length > 40) return res.status(400).json({ error: "Oyun adı 3-40 karakter olmalı." });
+  if (description.length < 10 || description.length > 240) return res.status(400).json({ error: "Açıklama 10-240 karakter olmalı." });
+  if (!["Adventure", "Simulator", "Tower Defense", "Obby"].includes(genre)) return res.status(400).json({ error: "Geçerli bir oyun türü seç." });
+  if (!CREATOR_TEMPLATES.has(template)) return res.status(400).json({ error: "Geçerli bir oyun şablonu seç." });
+  db.run("INSERT INTO published_games (owner_id, title, description, genre, template) VALUES (?, ?, ?, ?, ?)",
+    [req.session.userId, title, description, genre, template], function (err) {
+      if (err) return res.status(500).json({ error: "Oyun yayınlanamadı." });
+      res.status(201).json({ ok: true, game: { id: this.lastID, title, description, genre, template } });
+    });
+});
+
+app.get("/play/:id", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "play.html"));
 });
 
 app.get("/api/users/:username", (req, res) => {
